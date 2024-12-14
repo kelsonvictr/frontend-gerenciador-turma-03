@@ -1,8 +1,13 @@
 import React from 'react'
+import FornecedorList from './pages/Fornecedor/FornecedorList'
+import { BrowserRouter } from 'react-router-dom'
 
 const App = () => {
   return (
-    <div>App</div>
+      <BrowserRouter>
+        <FornecedorList />
+      </BrowserRouter>
+    
   )
 }
 
