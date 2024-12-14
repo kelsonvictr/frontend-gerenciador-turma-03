@@ -36,6 +36,16 @@ Durante o desenvolvimento das telas, será utilizado um backend mockado com o **
 
 3. Dentro da pasta `data`, crie um arquivo chamado `db.json` para armazenar os dados mockados.
 
+4. Adicione o script no arquivo `package.json` para rodar o json-server:
+   ```json
+   "server": "json-server --watch data/db.json"
+   ```
+
+5. Para iniciar o servidor, execute:
+   ```bash
+   npm run server
+   ```
+
 ### Estrutura inicial do arquivo `db.json`
 
 ```json
@@ -78,35 +88,35 @@ Durante o desenvolvimento das telas, será utilizado um backend mockado com o **
       "nome": "Cadeira Ergonômica",
       "preco": "850.00",
       "descricao": "Cadeira para escritório com ajuste de altura.",
-      "quantidadeEstoque": "20"
+      "quantidadeEstoque": 20
     },
     {
       "id": 2,
       "nome": "Notebook Gamer",
       "preco": "5000.00",
       "descricao": "Notebook com alto desempenho para jogos.",
-      "quantidadeEstoque": "10"
+      "quantidadeEstoque": 10
     },
     {
       "id": 3,
       "nome": "Geladeira Inox",
       "preco": "3500.00",
       "descricao": "Geladeira com design moderno e capacidade ampla.",
-      "quantidadeEstoque": "8"
+      "quantidadeEstoque": 8
     },
     {
       "id": 4,
       "nome": "Smartphone 5G",
       "preco": "2800.00",
       "descricao": "Celular de última geração com suporte a 5G.",
-      "quantidadeEstoque": "15"
+      "quantidadeEstoque": 15
     },
     {
       "id": 5,
       "nome": "Fone de Ouvido Bluetooth",
       "preco": "250.00",
       "descricao": "Fone sem fio com excelente qualidade de som.",
-      "quantidadeEstoque": "50"
+      "quantidadeEstoque": 50
     }
   ],
   "clientes": [
