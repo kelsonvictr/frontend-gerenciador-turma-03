@@ -58,6 +58,35 @@ const FornecedorForm = () => {
         setTooltipAberto(!tooltipAberto)
     }
 
+    const handleCepChange = (e) => {
+        const cep = e.target.value.replace(/\D/g, '') //Remove caracteres não númericos do cep.
+
+        setFornecedor({
+            ...fornecedor,
+            endereco: {...fornecedor.endereco, cep: e.target.value }
+        })
+
+        if (cep.length === 8) {
+            // Buscar o endereço com a API ViaCEP se o CEP tiver 8 dígitos.
+            axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => {
+                if (!response.data.erro) {
+                    setFornecedor(prevFornecedor => ({
+                        ...prevFornecedor,
+                        endereco: {
+                            ...prevFornecedor.endereco,
+                            logradouro: response.data.logradouro,
+                            bairro: response.data.bairro,
+                            cidade: response.data.localidade,
+                            estado: response.data.uf
+                        }
+                    }))
+                }
+            })
+            .catch(error => console.error("Erro ao buscar CEP: ", error))
+        }
+    }
+
   return (
     <div className="form-container">
         <h2 style={{ position: 'relative' }}>
@@ -78,7 +107,7 @@ const FornecedorForm = () => {
             )}
         </h2>
 
-        <form onSubmit={handleSubmit} className="fornecedor-form">
+        <form className="fornecedor-form">
                 <div className="form-group">
                     <label htmlFor="nome">Nome do fornecedor</label>
                     <input
