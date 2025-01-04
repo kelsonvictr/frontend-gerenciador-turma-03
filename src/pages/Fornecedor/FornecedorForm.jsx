@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from '../../api'
-import { FaQuestionCircle } from 'react-icons/fa'
+import { FaCheckCircle, FaExclamationTriangle, FaQuestionCircle } from 'react-icons/fa'
 import InputMask from 'react-input-mask'
+import Modal from 'react-modal'
 
 const FornecedorForm = () => {
 
@@ -344,6 +345,46 @@ const FornecedorForm = () => {
                     {id ? 'Editar' : 'Adicionar'}
                 </button>
             </form>
+
+
+            {/* Modal de sucesso */}
+            <Modal 
+                isOpen={modalAberto}
+                onRequestClose={fecharModal}
+                className="modal"
+                overlayClassName="overlay"
+            >
+                <div className="modalContent">
+                        <FaCheckCircle className="icon successIcon" />
+                        <h2>{ id ? 'Fornecedor atualizado com sucesso!' : 'Fornecedor adicionado com sucesso!' }</h2>
+                        <div className="modalButtons">
+                            <button onClick={fecharModal} className="btn-success">Fechar</button>
+                           { !id && <button onClick={adicionarOutroFornecedor} className="btn-secundary">Adicionar outro fornecedor</button> } 
+                        </div>
+                </div>
+            </Modal>
+
+         {/* Modal de erro */}
+         <Modal
+            isOpen={modalErroAberto}
+            onRequestClose={fecharModalErro}
+            className="modal"
+            overlayClassName="overlay"
+        >
+            <div className="modalContent">
+                <FaExclamationTriangle className="icon errorIcon" />
+                <h2>Ocorreu um ou mais erros:</h2>
+                { 
+                    mensagensErro.map((mensagem, index) => (
+                        <h4 key={index}>{mensagem}</h4>
+                    ))
+                }
+                <br/>
+                <button onClick={fecharModalErro} className="btn-secondary">Fechar</button>
+            </div>
+
+         </Modal>
+
     </div>
   )
 }
