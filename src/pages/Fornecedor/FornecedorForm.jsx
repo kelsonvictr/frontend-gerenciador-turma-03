@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from '../../api'
 import { FaQuestionCircle } from 'react-icons/fa'
@@ -24,8 +24,12 @@ const FornecedorForm = () => {
         }
     })
     const [tooltipAberto, setTooltipAberto] = useState(false)
+    const [mensagensErro, setMensagensErro] = useState([])
+    const [modalAberto, setModalAberto] = useState(false)
+    const [modalErroAberto, setModalErroAberto] = useState(false)
 
     const { id } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (id) {
@@ -87,6 +91,63 @@ const FornecedorForm = () => {
         }
     }
 
+    //  É A FUNÇÃO QUE ENVIA OS DADOS DO FORM PARA O BACKEND
+    const handleSubmit = (event) => {
+        event.preventDefault() // Previne o comportamento de recarregar a página
+        setMensagensErro([]) // Limpa mensagens de erro anteriores
+
+        // Remover a pontuação do CNPJ antes de enviar para o backend
+        const fornecedorData = {
+            ...fornecedor,
+            cnpj: fornecedor.cnpj.replace(/[^\d]/g, '') // Remove caracteres não númericos
+        }
+
+        // Determinar se a requisição será PUT (edição) ou POST (criação)
+        const request = id ? axios.put(`/fornecedores/${id}`, fornecedorData) : axios.post('/fornecedores', fornecedorData)
+        request.then(() => setModalAberto(true))
+        .catch(error => {
+            if (error.response && error.response.status === 500) {
+                setMensagensErro(["Erro no sistema, entre em contato com o suporte."])
+                setModalErroAberto(true)
+            } else if (error.response && error.response.data) {
+                setMensagensErro(Object.values(error.response.data))
+                setModalErroAberto(true)
+            } else {
+                console.error("Ocorreu um erro: ", error)
+            }
+        })
+
+    }
+
+    const fecharModal = () => {
+        setModalAberto(false)
+        navigate("/listar-fornecedores")
+    }
+
+    const fecharModalErro = () => {
+        setModalErroAberto(false)
+    }
+
+    const adicionarOutroFornecedor = () => {
+        setModalAberto(false)
+        setFornecedor({
+            nome: '',
+            cnpj: '',
+            email: '',
+            tipoFornecedor: 'COMUM', // Valor padrão inicial
+            endereco: {
+                cep: '',
+                logradouro: '',
+                numero: '',
+                complemento: '',
+                bairro: '',
+                cidade: '',
+                estado: '',
+                pais: 'Brasil' // Valor padrão inicial
+            }
+        })
+    }
+
   return (
     <div className="form-container">
         <h2 style={{ position: 'relative' }}>
@@ -107,7 +168,7 @@ const FornecedorForm = () => {
             )}
         </h2>
 
-        <form className="fornecedor-form">
+        <form onSubmit={handleSubmit} className="fornecedor-form">
                 <div className="form-group">
                     <label htmlFor="nome">Nome do fornecedor</label>
                     <input

@@ -23,6 +23,23 @@
       "nome": "Tech Solutions LTDA",
       "cnpj": "60.456.789/0001-50",
       "email": "info@techsolutions.com"
+    },
+    {
+      "nome": "Fornecedor WWW",
+      "cnpj": "33232323232323",
+      "email": "kelson.victr@gmail.com",
+      "tipoFornecedor": "COMUM",
+      "endereco": {
+        "cep": "58079-000",
+        "logradouro": "Rua Deputado Francisco Seráphico da Nóbrega Filho",
+        "numero": "383",
+        "complemento": "CASA",
+        "bairro": "Funcionários",
+        "cidade": "João Pessoa",
+        "estado": "PB",
+        "pais": "Brasil"
+      },
+      "id": 6
     }
   ],
   "produtos": [
