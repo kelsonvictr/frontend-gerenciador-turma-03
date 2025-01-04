@@ -359,7 +359,7 @@ const FornecedorForm = () => {
                         <h2>{ id ? 'Fornecedor atualizado com sucesso!' : 'Fornecedor adicionado com sucesso!' }</h2>
                         <div className="modalButtons">
                             <button onClick={fecharModal} className="btn-success">Fechar</button>
-                           { !id && <button onClick={adicionarOutroFornecedor} className="btn-secundary">Adicionar outro fornecedor</button> } 
+                           { !id && <button onClick={adicionarOutroFornecedor} className="btn-secondary">Adicionar outro fornecedor</button> } 
                         </div>
                 </div>
             </Modal>

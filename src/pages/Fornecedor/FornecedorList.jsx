@@ -73,7 +73,7 @@ const FornecedorList = () => {
                     fornecedores.map(fornecedor => (
                         <tr key={fornecedor.id}>
                             <td>{fornecedor.nome}</td>
-                            <td>{fornecedor.cnpj}</td>
+                            <td>{fornecedor.cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, "$1.$2.$3/$4-$5")}</td>
                             <td>{fornecedor.email}</td>
                             <td>
                                 <Link to={`/edit-fornecedores/${fornecedor.id}`} className="btn btn-sm btn-warning"><FaEdit className="icon icon-btn" /> Editar</Link>
