@@ -239,6 +239,14 @@
       "fornecedor": {
         "nome": "Fornecedor ABC"
       }
+    },
+    {
+      "nome": "Tomate",
+      "preco": "8.50",
+      "descricao": "Tomate do bom",
+      "quantidadeEstoque": "500",
+      "fornecedorId": "7",
+      "id": 6
     }
   ],
   "clientes": [
