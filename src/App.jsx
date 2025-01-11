@@ -18,6 +18,7 @@ const App = () => {
           <Route path="/edit-fornecedores/:id" element={<FornecedorForm />} />
           <Route path="/add-produtos" element={<ProdutoForm />} />
           <Route path="/listar-produtos" element={<ProdutoList />} />
+          <Route path="/edit-produtos/:id" element={<ProdutoForm />} />
         </Routes>
       </BrowserRouter>
     
