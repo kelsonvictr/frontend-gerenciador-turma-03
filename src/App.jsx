@@ -5,6 +5,7 @@ import Inicial from './pages/Inicial'
 import FornecedorForm from './pages/Fornecedor/FornecedorForm'
 import Navbar from './components/Navbar'
 import ProdutoForm from './pages/Produto/ProdutoForm'
+import ProdutoList from './pages/Produto/ProdutoList'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/add-fornecedores" element={<FornecedorForm />} />
           <Route path="/edit-fornecedores/:id" element={<FornecedorForm />} />
           <Route path="/add-produtos" element={<ProdutoForm />} />
+          <Route path="/listar-produtos" element={<ProdutoList />} />
         </Routes>
       </BrowserRouter>
     

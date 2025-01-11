@@ -81,8 +81,9 @@ const ProdutoList = () => {
                     <tr key={produto.id}>
                         <td>{produto.nome}</td>
                         <td>{parseFloat(produto.preco).toFixed(2)}</td>
+                        <td>{produto.descricao}</td>
                         <td>{produto.quantidadeEstoque}</td>
-                        <td>{produto.fornecedor.nome}</td>
+                        <td>...</td>
                         <td>
                                 <Link to={`/edit-produtos/${produto.id}`} className="btn btn-sm btn-warning">
                                     <FaEdit className="icon icon-btn" /> Editar
