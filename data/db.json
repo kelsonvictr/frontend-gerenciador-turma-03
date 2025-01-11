@@ -252,11 +252,11 @@
   "clientes": [
     {
       "id": 1,
-      "nome": "Carlos da Silva",
-      "cpf": "123.456.789-10",
+      "nome": "Carlos da Silva 2",
+      "cpf": "12345678910",
       "email": "carlos.silva@gmail.com",
       "endereco": {
-        "cep": "01010-000",
+        "cep": "01010000",
         "logradouro": "Rua Central",
         "numero": "123",
         "complemento": "Apto 1",
@@ -313,6 +313,22 @@
         "estado": "PR",
         "pais": "Brasil"
       }
+    },
+    {
+      "nome": "Pedro Oliveira",
+      "cpf": "12322222222",
+      "email": "pedro@gmail.com",
+      "endereco": {
+        "logradouro": "Rua Francisca Dantas Souza",
+        "numero": "399",
+        "complemento": "CASA",
+        "bairro": "Jardim Cidade Universitária",
+        "cidade": "João Pessoa",
+        "estado": "PB",
+        "pais": "Brasil",
+        "cep": "58052492"
+      },
+      "id": 5
     }
   ]
 }
