@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   // Função para fazer login e armazenar o token
   const login = async (username, senha) => {
     try {
-      const response = await fetch('http://localhost:8080/auth/login', {
+      const response = await fetch('https://gp-prof-api.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, senha })

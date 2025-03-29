@@ -5,15 +5,15 @@ import axios from 'axios'
 // Cria uma instância do Axios com a URL base da API.
 // Você pode alternar entre o servidor local ou o servidor hospedado (como o Render).
 
-// 👉 Exemplo com API hospedada no Render:
-// const instance = axios.create({
-//   baseURL: 'https://gp-prof-api.onrender.com'
-// })
+ //👉 Exemplo com API hospedada no Render:
+ const instance = axios.create({
+   baseURL: 'https://gp-prof-api.onrender.com'
+ })
 
 // 👉 Exemplo com API local (ideal para desenvolvimento local):
-const instance = axios.create({
-  baseURL: 'http://localhost:8080'
-})
+//const instance = axios.create({
+//  baseURL: 'http://localhost:8080'
+//})
 
 /**
  * “Interceptor é como um ‘porteiro’ que intercepta todas as requisições que o front envia para o backend. Se você tiver um token, ele automaticamente coloca esse token no cabeçalho da requisição. Isso evita que a gente tenha que escrever esse código manualmente toda vez.”
